@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { validateDeploymentConfig } from '../scripts/deploy-cloudflare.mjs';
 
 const generator = fileURLToPath(new URL('../scripts/configure-cloudflare.mjs', import.meta.url));
 const valid = {
@@ -15,6 +16,17 @@ const valid = {
   ACCESS_AUD: 'a'.repeat(64),
   CLOUDFLARE_CUSTOM_DOMAIN: '',
 };
+
+test('deployment command blocks the local/Sites artifact seen in the failed Cloudflare build', () => {
+  const local = {
+    name: 'stepline-eduhub',
+    vars: {},
+    d1_databases: [{ binding: 'DB', database_id: '00000000-0000-4000-8000-000000000000' }],
+    r2_buckets: [{ binding: 'BUCKET', bucket_name: 'site-creator-r2' }],
+  };
+  assert.throws(() => validateDeploymentConfig(local), /Refusing to deploy a local\/Sites build/);
+  assert.throws(() => validateDeploymentConfig({ ...local, vars: { AUTH_PROVIDER: 'cloudflare-access' } }), /Refusing/);
+});
 function generate(overrides, check) {
   const dir = mkdtempSync(join(tmpdir(), 'stepline-cf-config-'));
   try {

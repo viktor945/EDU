@@ -29,6 +29,25 @@ Worker удаляет входящие `oai-authenticated-*` заголовки 
 
 ## Настройка GitHub
 
+Если Worker уже создан через Cloudflare Dashboard → Workers & Pages → Import a repository, используется **Workers Builds**. Можно продолжать с ним; одновременно включать второй канал публикации через GitHub Actions не требуется.
+
+Для существующего Worker `edu` откройте Settings → Build (Builds) и задайте:
+
+| Настройка Workers Builds | Значение |
+| --- | --- |
+| Git repository / Production branch | `viktor945/EDU` / `main` |
+| Root directory | Корень репозитория |
+| Build command | `npm run build:cloudflare` |
+| Deploy command | `npm run deploy:cloudflare` |
+
+В **Build variables and secrets** добавьте `CLOUDFLARE_WORKER_NAME=edu`, UUID реальной базы в `CLOUDFLARE_D1_DATABASE_ID`, имя bucket в `CLOUDFLARE_R2_BUCKET`, `ACCESS_TEAM_DOMAIN`, `ACCESS_AUD`; при наличии — `CLOUDFLARE_CUSTOM_DOMAIN`. Используйте Node 24. Эти переменные нужны во время сборки; одних runtime bindings в настройках Worker недостаточно. Авторизацию публикации предоставляет интеграция Workers Builds — отдельный GitHub secret с токеном для этого варианта не нужен.
+
+Ошибка `Please enable R2 through the Cloudflare Dashboard [code: 10042]` означает, что R2 ещё не активирован в аккаунте. Откройте R2 Object Storage в панели аккаунта, включите сервис по условиям Cloudflare и создайте bucket `stepline-edu-files`. Имя укажите в build variable `CLOUDFLARE_R2_BUCKET`. Включение R2 — действие владельца аккаунта; Cloudflare может потребовать платёжные реквизиты.
+
+Если в ошибке указан `site-creator-r2`, запускалась обычная локальная/Sites-сборка. Кроме R2 нужно исправить команды выше: такая сборка содержит placeholder D1 и не включает обязательную проверку Cloudflare Access. Новый `deploy:cloudflare` откажется публиковать этот артефакт. После подготовки реальных переменных запустите повторную сборку. Создание D1 и её миграции остаются отдельным обязательным шагом.
+
+Ниже — альтернативный вариант через GitHub Actions. Выберите один канал публикации, чтобы две системы не развёртывали один Worker независимо.
+
 В Settings → Environments создайте `cloudflare-production`. Добавьте **secret** `CLOUDFLARE_API_TOKEN` и следующие **variables**:
 
 | Имя | Значение |
