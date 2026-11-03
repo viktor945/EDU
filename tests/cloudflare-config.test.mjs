@@ -39,7 +39,7 @@ test('deployment configuration refuses local placeholder and incomplete Access s
   for (const overrides of [
     { CLOUDFLARE_D1_DATABASE_ID: '00000000-0000-4000-8000-000000000000' },
     { ACCESS_AUD: '' }, { ACCESS_TEAM_DOMAIN: 'attacker.example' },
-    { CLOUDFLARE_R2_BUCKET: '' }, { CLOUDFLARE_CUSTOM_DOMAIN: 'https://edu.example' },
+    { FILE_STORAGE: 'r2', CLOUDFLARE_R2_BUCKET: '' }, { CLOUDFLARE_CUSTOM_DOMAIN: 'https://edu.example' },
   ]) generate(overrides, result => assert.notEqual(result.status, 0));
 });
 
@@ -50,6 +50,20 @@ test('custom-domain configuration disables workers.dev and contains no Sites pro
     assert.equal(config.workers_dev, false);
     assert.deepEqual(config.routes, [{ pattern: 'edu.example.com', custom_domain: true }]);
     assert.equal(config.vars.AUTH_PROVIDER, 'cloudflare-access');
+    assert.equal(config.vars.FILE_STORAGE, 'd1');
+    assert.equal(config.r2_buckets, undefined);
+    assert.equal(config.images, undefined);
+    validateDeploymentConfig(config);
     assert.equal(JSON.stringify(config).includes('project_id'), false);
+  });
+});
+
+test('R2 is optional and only bound when explicitly selected', () => {
+  generate({ FILE_STORAGE: 'r2' }, (result, dir) => {
+    assert.equal(result.status, 0, result.stderr);
+    const config=JSON.parse(readFileSync(join(dir,'.wrangler/cloudflare.json')));
+    assert.equal(config.r2_buckets[0].bucket_name,valid.CLOUDFLARE_R2_BUCKET);
+    assert.equal(config.vars.FILE_STORAGE,'r2');
+    validateDeploymentConfig(config);
   });
 });

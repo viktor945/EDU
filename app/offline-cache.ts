@@ -2,7 +2,7 @@ export const SYNC_INTERVAL=4*60*1000;
 export const DATA_CACHE='stepline-public-data-v1';
 export const FILE_CACHE='stepline-public-files-v1';
 export const PAGE_CACHE='stepline-public-pages-v1';
-export const STATIC_CACHE='stepline-static-v38';
+export const STATIC_CACHE='stepline-static-v39';
 type Snapshot<T>={data:T;savedAt:number};
 export function publicPageKey(value:string){const url=new URL(value,location.origin);url.searchParams.delete('lang');url.searchParams.delete('scan');return url.href;}
 export function offlineFileUrls(value:unknown):string[]{
@@ -39,10 +39,10 @@ async function cachePages(value:unknown,signal?:AbortSignal){
   for(const section of allowedSections(record.school.institution_type))if(section!=='home'&&section!=='announcements')paths.add(location.origin+'/section/'+section+suffix);
  }
  await parallel([...paths],async url=>{
-  const previous=await cache.match(url);if(previous?.headers.get('X-STEPLine-Offline-Version')==='38')return;
+  const previous=await cache.match(url);if(previous?.headers.get('X-STEPLine-Offline-Version')==='39')return;
   const response=await fetch(url,{headers:{Accept:'text/html'},credentials:'omit',cache:'no-store',signal});
   if(!response.ok||!response.headers.get('Content-Type')?.includes('text/html')||response.redirected)throw Error('Offline page unavailable');
-  const headers=new Headers(response.headers);headers.set('X-STEPLine-Offline-Version','38');headers.delete('Content-Encoding');headers.delete('Content-Length');
+  const headers=new Headers(response.headers);headers.set('X-STEPLine-Offline-Version','39');headers.delete('Content-Encoding');headers.delete('Content-Length');
   await cache.put(url,new Response(await response.arrayBuffer(),{headers,status:response.status}));
  });
 }

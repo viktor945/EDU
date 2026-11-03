@@ -28,6 +28,7 @@ jobs:
           node tests/ticker-motion.cjs
           node tests/cloudflare-access.test.mjs
           node tests/cloudflare-config.test.mjs
+          node tests/d1-file-storage.test.mjs
       - name: Build Worker and validate rendered HTML
         env:
           SITES_ENV_READY: '1'
@@ -36,10 +37,11 @@ jobs:
           npm run build
           node tests/rendered-html.test.mjs
           node tests/cloudflare-worker.test.mjs
+          node tests/d1-runtime.test.mjs
       - name: Validate standalone Cloudflare build without deployment
         env:
           CLOUDFLARE_D1_DATABASE_ID: '11111111-1111-4111-8111-111111111111'
-          CLOUDFLARE_R2_BUCKET: stepline-ci-placeholder
+          FILE_STORAGE: d1
           ACCESS_TEAM_DOMAIN: stepline-ci.cloudflareaccess.com
           ACCESS_AUD: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         run: |

@@ -1,4 +1,10 @@
-import { index, integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+import { blob, index, integer, primaryKey, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+export const d1FileObjects = sqliteTable('d1_file_objects', {
+ objectKey:text('object_key').primaryKey(),size:integer('size').notNull(),contentType:text('content_type').notNull(),uploadedAt:text('uploaded_at').notNull(),etag:text('etag').notNull(),
+});
+export const d1FileChunks = sqliteTable('d1_file_chunks', {
+ objectKey:text('object_key').notNull().references(()=>d1FileObjects.objectKey,{onDelete:'cascade'}),chunkIndex:integer('chunk_index').notNull(),data:blob('data').notNull(),
+},t=>[primaryKey({columns:[t.objectKey,t.chunkIndex]})]);
 export const appOperations = sqliteTable('app_operations', { id: text('id').primaryKey(), createdAt: text('created_at').notNull() });
 
 export const translationCache = sqliteTable('translation_cache', {

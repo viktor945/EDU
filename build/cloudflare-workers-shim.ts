@@ -1,3 +1,5 @@
+import { D1FileStorage } from './d1-file-storage';
+
 type RuntimeBindings = {
   DB: D1Database;
   BUCKET: R2Bucket;
@@ -10,7 +12,9 @@ declare global {
 
 export const env = new Proxy({} as RuntimeBindings, {
   get(_target, property) {
-    return (globalThis.__STEP_EDU_RUNTIME_ENV__ as RuntimeBindings | undefined)?.[property as string];
+    const bindings = globalThis.__STEP_EDU_RUNTIME_ENV__ as RuntimeBindings | undefined;
+    if (property === 'BUCKET' && bindings?.FILE_STORAGE === 'd1') return new D1FileStorage(bindings.DB);
+    return bindings?.[property as string];
   },
 });
 

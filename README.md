@@ -36,4 +36,4 @@ node tests/rendered-html.test.mjs
 
 Тест content-integration намеренно выводит `Injected write failure` при проверке отката транзакции. Последняя команда запускает два именованных теста HTML; проверяйте, что выполнены оба. GitHub Actions запускает эти проверки при push и pull request.
 
-Развёртывание на Cloudflare из GitHub подготовлено отдельным workflow и включается после подключения вашего аккаунта, D1/R2 и Cloudflare Access. Настройка и ограничения: [docs/CLOUDFLARE_DEPLOYMENT.md](docs/CLOUDFLARE_DEPLOYMENT.md).
+Развёртывание на Cloudflare из GitHub подготовлено отдельным workflow и включается после подключения вашего аккаунта, D1 и Cloudflare Access. По умолчанию файлы хранятся в D1 без R2: до 2 МБ на файл, база Free до 500 МБ. Настройка и ограничения: [docs/CLOUDFLARE_DEPLOYMENT.md](docs/CLOUDFLARE_DEPLOYMENT.md).

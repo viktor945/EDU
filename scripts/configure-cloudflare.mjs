@@ -9,7 +9,9 @@ function required(name, pattern) {
 
 const databaseId = required('CLOUDFLARE_D1_DATABASE_ID', /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i);
 if (databaseId === '00000000-0000-4000-8000-000000000000') throw new Error('The local placeholder database cannot be deployed');
-const bucket = required('CLOUDFLARE_R2_BUCKET', /^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/);
+const storage = process.env.FILE_STORAGE || 'd1';
+if (!['d1', 'r2'].includes(storage)) throw new Error('FILE_STORAGE must be d1 or r2');
+const bucket = storage === 'r2' ? required('CLOUDFLARE_R2_BUCKET', /^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/) : undefined;
 const team = required('ACCESS_TEAM_DOMAIN', /^[a-z0-9-]+\.cloudflareaccess\.com$/);
 const audience = required('ACCESS_AUD', /^[a-f0-9]{64}$/i);
 const name = process.env.CLOUDFLARE_WORKER_NAME || 'stepline-edu';
@@ -22,11 +24,10 @@ const config = {
   compatibility_date: '2026-05-15', compatibility_flags: ['nodejs_compat'],
   workers_dev: !domain,
   ...(domain ? { routes: [{ pattern: domain, custom_domain: true }] } : {}),
-  vars: { AUTH_PROVIDER: 'cloudflare-access', ACCESS_TEAM_DOMAIN: team, ACCESS_AUD: audience },
+  vars: { AUTH_PROVIDER: 'cloudflare-access', ACCESS_TEAM_DOMAIN: team, ACCESS_AUD: audience, FILE_STORAGE: storage },
   d1_databases: [{ binding: 'DB', database_name: 'stepline-edu', database_id: databaseId, migrations_dir: resolve('drizzle') }],
-  r2_buckets: [{ binding: 'BUCKET', bucket_name: bucket }],
+  ...(storage === 'r2' ? { r2_buckets: [{ binding: 'BUCKET', bucket_name: bucket }] } : {}),
   assets: { binding: 'ASSETS', run_worker_first: true },
-  images: { binding: 'IMAGES' },
   observability: { enabled: true },
 };
 mkdirSync('.wrangler', { recursive: true });

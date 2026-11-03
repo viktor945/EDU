@@ -1,5 +1,5 @@
 /* Public display only. Admin pages, sessions and private APIs are never cached. */
-const STATIC='stepline-static-v38',FILES='stepline-public-files-v1',PAGES='stepline-public-pages-v1';
+const STATIC='stepline-static-v39',FILES='stepline-public-files-v1',PAGES='stepline-public-pages-v1';
 const publicPage=path=>path==='/'||path==='/student'||path.startsWith('/section/')||path.startsWith('/screen/');
 const pageKey=value=>{const u=new URL(value);u.searchParams.delete('lang');u.searchParams.delete('scan');return u.href;};
 self.addEventListener('install',event=>event.waitUntil((async()=>{

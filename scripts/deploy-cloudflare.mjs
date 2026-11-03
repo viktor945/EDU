@@ -8,7 +8,9 @@ export function validateDeploymentConfig(config) {
   const bucket = config.r2_buckets?.find(binding => binding.binding === 'BUCKET');
   if (config.vars?.AUTH_PROVIDER !== 'cloudflare-access' ||
       !db?.database_id || db.database_id === '00000000-0000-4000-8000-000000000000' ||
-      !bucket?.bucket_name || bucket.bucket_name === 'site-creator-r2') {
+      !['d1', 'r2'].includes(config.vars?.FILE_STORAGE) ||
+      (config.vars?.FILE_STORAGE === 'r2' && (!bucket?.bucket_name || bucket.bucket_name === 'site-creator-r2')) ||
+      (config.vars?.FILE_STORAGE === 'd1' && config.r2_buckets?.length)) {
     throw new Error('Refusing to deploy a local/Sites build. Set real Cloudflare resource variables and run npm run build:cloudflare first.');
   }
   if (process.env.CLOUDFLARE_WORKER_NAME && config.name !== process.env.CLOUDFLARE_WORKER_NAME) {

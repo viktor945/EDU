@@ -35,6 +35,7 @@ jobs:
       CLOUDFLARE_WORKER_NAME: ${{ vars.CLOUDFLARE_WORKER_NAME }}
       CLOUDFLARE_D1_DATABASE_ID: ${{ vars.CLOUDFLARE_D1_DATABASE_ID }}
       CLOUDFLARE_R2_BUCKET: ${{ vars.CLOUDFLARE_R2_BUCKET }}
+      FILE_STORAGE: ${{ vars.FILE_STORAGE }}
       CLOUDFLARE_CUSTOM_DOMAIN: ${{ vars.CLOUDFLARE_CUSTOM_DOMAIN }}
       ACCESS_TEAM_DOMAIN: ${{ vars.ACCESS_TEAM_DOMAIN }}
       ACCESS_AUD: ${{ vars.ACCESS_AUD }}
@@ -62,11 +63,13 @@ jobs:
           node tests/ticker-motion.cjs
           node tests/cloudflare-access.test.mjs
           node tests/cloudflare-config.test.mjs
+          node tests/d1-file-storage.test.mjs
       - run: bash scripts/build-cloudflare.sh
       - name: Validate built Worker
         run: |
           node tests/rendered-html.test.mjs
           node tests/cloudflare-worker.test.mjs
+          node tests/d1-runtime.test.mjs
       - name: Apply explicitly requested migrations
         if: github.event_name == 'workflow_dispatch' && inputs.apply_migrations
         env:

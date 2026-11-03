@@ -2,6 +2,7 @@ import {fileMime} from "../../file-mime";
 import { env } from "cloudflare:workers";
 import { NextRequest, NextResponse } from "next/server";
 import { actorFromRequest, canAccessSchool, hasPermission } from "../../access-policy";
+import { D1_FILE_LIMIT } from '../../../build/d1-file-storage';
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,7 @@ export async function POST(request: NextRequest) {
     if (!(file instanceof File) || !schoolId) return NextResponse.json({ error: "Выберите файл и школу" }, { status: 400 });
     if (!hasPermission(actor, "files.manage") || !canAccessSchool(actor, schoolId)) return NextResponse.json({ error: "Недостаточно прав" }, { status: 403 });
     if (file.size > 25 * 1024 * 1024) return NextResponse.json({ error: "Максимальный размер файла — 25 МБ" }, { status: 413 });
+    if (env.FILE_STORAGE === 'd1' && file.size > D1_FILE_LIMIT) return NextResponse.json({ error: "Максимальный размер файла в бесплатном режиме D1 — 2 МБ" }, { status: 413 });
     const id = crypto.randomUUID();
     const safeName = file.name.replace(/[^a-zA-Z0-9а-яА-ЯёЁ._-]+/g, "-");
     const objectKey = `${schoolId}/${category}/${id}-${safeName}`;
