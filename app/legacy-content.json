@@ -1,0 +1,709 @@
+[
+  {
+    "id": "legacy-schedule-0",
+    "section": "schedule",
+    "title": "Алгебра",
+    "description": "",
+    "payload": {
+      "className": "7А",
+      "day": "Понедельник",
+      "shift": "1",
+      "lessonNumber": 1,
+      "start": "08:00",
+      "end": "08:45",
+      "teacher": "А. Б. Омарова",
+      "room": "204"
+    }
+  },
+  {
+    "id": "legacy-schedule-1",
+    "section": "schedule",
+    "title": "Казахский язык",
+    "description": "",
+    "payload": {
+      "className": "7А",
+      "day": "Понедельник",
+      "shift": "1",
+      "lessonNumber": 2,
+      "start": "08:55",
+      "end": "09:40",
+      "teacher": "М. К. Садыкова",
+      "room": "312"
+    }
+  },
+  {
+    "id": "legacy-schedule-2",
+    "section": "schedule",
+    "title": "Информатика",
+    "description": "Замена кабинета",
+    "payload": {
+      "className": "7А",
+      "day": "Понедельник",
+      "shift": "1",
+      "lessonNumber": 3,
+      "start": "09:50",
+      "end": "10:35",
+      "teacher": "Д. С. Ибраев",
+      "room": "105"
+    }
+  },
+  {
+    "id": "legacy-schedule-3",
+    "section": "schedule",
+    "title": "История Казахстана",
+    "description": "",
+    "payload": {
+      "className": "7А",
+      "day": "Понедельник",
+      "shift": "1",
+      "lessonNumber": 4,
+      "start": "10:55",
+      "end": "11:40",
+      "teacher": "Л. Н. Айтбаева",
+      "room": "208"
+    }
+  },
+  {
+    "id": "legacy-schedule-4",
+    "section": "schedule",
+    "title": "Физика",
+    "description": "",
+    "payload": {
+      "className": "7А",
+      "day": "Понедельник",
+      "shift": "1",
+      "lessonNumber": 5,
+      "start": "11:50",
+      "end": "12:35",
+      "teacher": "Е. Р. Касымов",
+      "room": "301"
+    }
+  },
+  {
+    "id": "legacy-schedule-5",
+    "section": "schedule",
+    "title": "Физическая культура",
+    "description": "",
+    "payload": {
+      "className": "7А",
+      "day": "Понедельник",
+      "shift": "1",
+      "lessonNumber": 6,
+      "start": "12:45",
+      "end": "13:30",
+      "teacher": "Н. Т. Сериков",
+      "room": "Спортзал"
+    }
+  },
+  {
+    "id": "legacy-events-6",
+    "section": "events",
+    "title": "Родительское собрание",
+    "description": "",
+    "payload": {
+      "date": "2026-07-18",
+      "start": "18:30",
+      "room": "Актовый зал",
+      "audience": "Родителям"
+    }
+  },
+  {
+    "id": "legacy-events-7",
+    "section": "events",
+    "title": "Летний фестиваль проектов",
+    "description": "",
+    "payload": {
+      "date": "2026-07-19",
+      "start": "11:00",
+      "room": "Школьный двор",
+      "audience": "Всем"
+    }
+  },
+  {
+    "id": "legacy-events-8",
+    "section": "events",
+    "title": "Открытая тренировка по волейболу",
+    "description": "",
+    "payload": {
+      "date": "2026-07-22",
+      "start": "15:00",
+      "room": "Спортзал",
+      "audience": "5–9 классы"
+    }
+  },
+  {
+    "id": "legacy-events-9",
+    "section": "events",
+    "title": "Встреча клуба юных инженеров",
+    "description": "",
+    "payload": {
+      "date": "2026-07-25",
+      "start": "14:30",
+      "room": "Кабинет 105",
+      "audience": "6–8 классы"
+    }
+  },
+  {
+    "id": "legacy-clubs-10",
+    "section": "clubs",
+    "title": "Робототехника",
+    "description": "",
+    "payload": {
+      "category": "Технологии",
+      "className": "6–9 классы",
+      "teacher": "Д. С. Ибраев",
+      "days": "Вт, Чт",
+      "start": "15:00",
+      "places": 4
+    }
+  },
+  {
+    "id": "legacy-clubs-11",
+    "section": "clubs",
+    "title": "Школьный театр",
+    "description": "",
+    "payload": {
+      "category": "Творчество",
+      "className": "5–11 классы",
+      "teacher": "А. В. Ким",
+      "days": "Пн, Ср",
+      "start": "16:00",
+      "places": 8
+    }
+  },
+  {
+    "id": "legacy-clubs-12",
+    "section": "clubs",
+    "title": "Волейбол",
+    "description": "",
+    "payload": {
+      "category": "Спорт",
+      "className": "7–11 классы",
+      "teacher": "Н. Т. Сериков",
+      "days": "Вт, Пт",
+      "start": "16:30",
+      "places": ""
+    }
+  },
+  {
+    "id": "legacy-clubs-13",
+    "section": "clubs",
+    "title": "English Speaking Club",
+    "description": "",
+    "payload": {
+      "category": "Языки",
+      "className": "7–10 классы",
+      "teacher": "М. А. Смаилова",
+      "days": "Ср",
+      "start": "15:30",
+      "places": 6
+    }
+  },
+  {
+    "id": "legacy-clubs-14",
+    "section": "clubs",
+    "title": "Юный эколог",
+    "description": "",
+    "payload": {
+      "category": "Наука",
+      "className": "5–8 классы",
+      "teacher": "Л. К. Аманова",
+      "days": "Сб",
+      "start": "10:00",
+      "places": 10
+    }
+  },
+  {
+    "id": "legacy-clubs-15",
+    "section": "clubs",
+    "title": "Домбра",
+    "description": "",
+    "payload": {
+      "category": "Творчество",
+      "className": "2–9 классы",
+      "teacher": "Е. А. Нурланова",
+      "days": "Пн, Пт",
+      "start": "14:30",
+      "places": 3
+    }
+  },
+  {
+    "id": "legacy-achievements-16",
+    "section": "achievements",
+    "title": "Республиканская олимпиада по математике",
+    "description": "",
+    "payload": {
+      "person": "Алия Нурбекова · 10А",
+      "category": "Олимпиада",
+      "award": "I место"
+    }
+  },
+  {
+    "id": "legacy-achievements-17",
+    "section": "achievements",
+    "title": "Городской конкурс исследовательских проектов",
+    "description": "",
+    "payload": {
+      "person": "Команда 8Б класса",
+      "category": "Наука",
+      "award": "Гран-при"
+    }
+  },
+  {
+    "id": "legacy-achievements-18",
+    "section": "achievements",
+    "title": "Школьная лига по волейболу",
+    "description": "",
+    "payload": {
+      "person": "Сборная школы",
+      "category": "Спорт",
+      "award": "II место"
+    }
+  },
+  {
+    "id": "legacy-achievements-19",
+    "section": "achievements",
+    "title": "Фестиваль молодых исполнителей «Жас талант»",
+    "description": "",
+    "payload": {
+      "person": "Айсулу Серик · 7В",
+      "category": "Творчество",
+      "award": "Лауреат"
+    }
+  },
+  {
+    "id": "legacy-menu-20",
+    "section": "menu",
+    "title": "Завтрак",
+    "description": "Каша овсяная с ягодами\nХлеб с сыром\nЧай с молоком",
+    "payload": {
+      "day": "Понедельник",
+      "meal": "Завтрак",
+      "kcal": 412
+    }
+  },
+  {
+    "id": "legacy-menu-21",
+    "section": "menu",
+    "title": "Обед",
+    "description": "Суп-лапша домашняя\nКотлета куриная с гречкой\nСалат из свежих овощей\nКомпот",
+    "payload": {
+      "day": "Понедельник",
+      "meal": "Обед",
+      "kcal": 684
+    }
+  },
+  {
+    "id": "legacy-menu-22",
+    "section": "menu",
+    "title": "Полдник",
+    "description": "Булочка цельнозерновая\nЯблоко\nКефир",
+    "payload": {
+      "day": "Понедельник",
+      "meal": "Полдник",
+      "kcal": 296
+    }
+  },
+  {
+    "id": "legacy-menu-23",
+    "section": "menu",
+    "title": "Завтрак",
+    "description": "Омлет с зеленью\nХлеб пшеничный\nКакао",
+    "payload": {
+      "day": "Вторник",
+      "meal": "Завтрак",
+      "kcal": 438
+    }
+  },
+  {
+    "id": "legacy-menu-24",
+    "section": "menu",
+    "title": "Обед",
+    "description": "Борщ со сметаной\nПлов с говядиной\nСалат витаминный\nМорс",
+    "payload": {
+      "day": "Вторник",
+      "meal": "Обед",
+      "kcal": 721
+    }
+  },
+  {
+    "id": "legacy-menu-25",
+    "section": "menu",
+    "title": "Полдник",
+    "description": "Творожная запеканка\nГруша\nЧай",
+    "payload": {
+      "day": "Вторник",
+      "meal": "Полдник",
+      "kcal": 315
+    }
+  },
+  {
+    "id": "legacy-menu-26",
+    "section": "menu",
+    "title": "Завтрак",
+    "description": "Каша рисовая\nБутерброд с маслом\nЧай",
+    "payload": {
+      "day": "Среда",
+      "meal": "Завтрак",
+      "kcal": 401
+    }
+  },
+  {
+    "id": "legacy-menu-27",
+    "section": "menu",
+    "title": "Обед",
+    "description": "Суп чечевичный\nРыба запечённая с пюре\nСалат морковный\nКомпот",
+    "payload": {
+      "day": "Среда",
+      "meal": "Обед",
+      "kcal": 658
+    }
+  },
+  {
+    "id": "legacy-menu-28",
+    "section": "menu",
+    "title": "Полдник",
+    "description": "Йогурт\nПеченье овсяное\nБанан",
+    "payload": {
+      "day": "Среда",
+      "meal": "Полдник",
+      "kcal": 330
+    }
+  },
+  {
+    "id": "legacy-menu-29",
+    "section": "menu",
+    "title": "Завтрак",
+    "description": "Сырники со сметаной\nФрукт\nКакао",
+    "payload": {
+      "day": "Четверг",
+      "meal": "Завтрак",
+      "kcal": 446
+    }
+  },
+  {
+    "id": "legacy-menu-30",
+    "section": "menu",
+    "title": "Обед",
+    "description": "Суп овощной\nКурица с макаронами\nСалат свекольный\nКомпот",
+    "payload": {
+      "day": "Четверг",
+      "meal": "Обед",
+      "kcal": 697
+    }
+  },
+  {
+    "id": "legacy-menu-31",
+    "section": "menu",
+    "title": "Полдник",
+    "description": "Сэндвич с сыром\nКефир",
+    "payload": {
+      "day": "Четверг",
+      "meal": "Полдник",
+      "kcal": 287
+    }
+  },
+  {
+    "id": "legacy-menu-32",
+    "section": "menu",
+    "title": "Завтрак",
+    "description": "Каша гречневая\nХлеб с сыром\nЧай",
+    "payload": {
+      "day": "Пятница",
+      "meal": "Завтрак",
+      "kcal": 395
+    }
+  },
+  {
+    "id": "legacy-menu-33",
+    "section": "menu",
+    "title": "Обед",
+    "description": "Рассольник\nТефтели с рисом\nОвощная нарезка\nМорс",
+    "payload": {
+      "day": "Пятница",
+      "meal": "Обед",
+      "kcal": 705
+    }
+  },
+  {
+    "id": "legacy-menu-34",
+    "section": "menu",
+    "title": "Полдник",
+    "description": "Пирог яблочный\nМолоко",
+    "payload": {
+      "day": "Пятница",
+      "meal": "Полдник",
+      "kcal": 308
+    }
+  },
+  {
+    "id": "legacy-map-35",
+    "section": "map",
+    "title": "Начальные классы",
+    "description": "",
+    "payload": {
+      "floor": 1,
+      "room": "101"
+    }
+  },
+  {
+    "id": "legacy-map-36",
+    "section": "map",
+    "title": "Информатика",
+    "description": "",
+    "payload": {
+      "floor": 1,
+      "room": "105"
+    }
+  },
+  {
+    "id": "legacy-map-37",
+    "section": "map",
+    "title": "Медпункт",
+    "description": "",
+    "payload": {
+      "floor": 1,
+      "room": "110"
+    }
+  },
+  {
+    "id": "legacy-map-38",
+    "section": "map",
+    "title": "Мероприятия",
+    "description": "",
+    "payload": {
+      "floor": 1,
+      "room": "Актовый зал"
+    }
+  },
+  {
+    "id": "legacy-map-39",
+    "section": "map",
+    "title": "Питание",
+    "description": "",
+    "payload": {
+      "floor": 1,
+      "room": "Столовая"
+    }
+  },
+  {
+    "id": "legacy-map-40",
+    "section": "map",
+    "title": "Главный вход",
+    "description": "",
+    "payload": {
+      "floor": 1,
+      "room": "Вход"
+    }
+  },
+  {
+    "id": "legacy-map-41",
+    "section": "map",
+    "title": "Математика",
+    "description": "",
+    "payload": {
+      "floor": 2,
+      "room": "204"
+    }
+  },
+  {
+    "id": "legacy-map-42",
+    "section": "map",
+    "title": "История",
+    "description": "",
+    "payload": {
+      "floor": 2,
+      "room": "208"
+    }
+  },
+  {
+    "id": "legacy-map-43",
+    "section": "map",
+    "title": "Психолог",
+    "description": "",
+    "payload": {
+      "floor": 2,
+      "room": "212"
+    }
+  },
+  {
+    "id": "legacy-map-44",
+    "section": "map",
+    "title": "Читальный зал",
+    "description": "",
+    "payload": {
+      "floor": 2,
+      "room": "Библиотека"
+    }
+  },
+  {
+    "id": "legacy-map-45",
+    "section": "map",
+    "title": "Педагоги",
+    "description": "",
+    "payload": {
+      "floor": 2,
+      "room": "Учительская"
+    }
+  },
+  {
+    "id": "legacy-map-46",
+    "section": "map",
+    "title": "Проектная зона",
+    "description": "",
+    "payload": {
+      "floor": 2,
+      "room": "Коворкинг"
+    }
+  },
+  {
+    "id": "legacy-map-47",
+    "section": "map",
+    "title": "Физика",
+    "description": "",
+    "payload": {
+      "floor": 3,
+      "room": "301"
+    }
+  },
+  {
+    "id": "legacy-map-48",
+    "section": "map",
+    "title": "Химия",
+    "description": "",
+    "payload": {
+      "floor": 3,
+      "room": "305"
+    }
+  },
+  {
+    "id": "legacy-map-49",
+    "section": "map",
+    "title": "Казахский язык",
+    "description": "",
+    "payload": {
+      "floor": 3,
+      "room": "312"
+    }
+  },
+  {
+    "id": "legacy-map-50",
+    "section": "map",
+    "title": "Биология",
+    "description": "",
+    "payload": {
+      "floor": 3,
+      "room": "315"
+    }
+  },
+  {
+    "id": "legacy-map-51",
+    "section": "map",
+    "title": "Запись и монтаж",
+    "description": "",
+    "payload": {
+      "floor": 3,
+      "room": "Медиацентр"
+    }
+  },
+  {
+    "id": "legacy-map-52",
+    "section": "map",
+    "title": "STEM-зона",
+    "description": "",
+    "payload": {
+      "floor": 3,
+      "room": "Лаборатория"
+    }
+  },
+  {
+    "id": "legacy-news-53",
+    "section": "news",
+    "title": "Ученики представили проекты умной городской среды",
+    "description": "Команды 8–10 классов разработали прототипы решений для безопасного и экологичного города.",
+    "payload": {
+      "date": "2026-07-16",
+      "category": "Школьная жизнь"
+    }
+  },
+  {
+    "id": "legacy-news-54",
+    "section": "news",
+    "title": "Открыта регистрация в летние кружки",
+    "description": "Робототехника, разговорный английский, волейбол и творческие мастерские ждут участников.",
+    "payload": {
+      "date": "2026-07-14",
+      "category": "Объявления"
+    }
+  },
+  {
+    "id": "legacy-news-55",
+    "section": "news",
+    "title": "Наша сборная — призёр городской школьной лиги",
+    "description": "Поздравляем команду и тренера со вторым местом в финальном турнире по волейболу.",
+    "payload": {
+      "date": "2026-07-10",
+      "category": "Достижения"
+    }
+  },
+  {
+    "id": "legacy-news-56",
+    "section": "news",
+    "title": "Как провести каникулы безопасно и с пользой",
+    "description": "Памятка для учеников и родителей: режим дня, цифровая гигиена и городские активности.",
+    "payload": {
+      "date": "2026-07-08",
+      "category": "Полезное"
+    }
+  },
+  {
+    "id": "legacy-documents-57",
+    "section": "documents",
+    "title": "Устав школы-гимназии",
+    "description": "Прикрепите файл в административном кабинете.",
+    "payload": {
+      "category": "Учредительные",
+      "year": "2026–2027"
+    }
+  },
+  {
+    "id": "legacy-documents-58",
+    "section": "documents",
+    "title": "Правила внутреннего распорядка",
+    "description": "Прикрепите файл в административном кабинете.",
+    "payload": {
+      "category": "Правила",
+      "year": "2026–2027"
+    }
+  },
+  {
+    "id": "legacy-documents-59",
+    "section": "documents",
+    "title": "Положение о школьной форме",
+    "description": "Прикрепите файл в административном кабинете.",
+    "payload": {
+      "category": "Родителям",
+      "year": "2026–2027"
+    }
+  },
+  {
+    "id": "legacy-documents-60",
+    "section": "documents",
+    "title": "Календарный учебный график",
+    "description": "Прикрепите файл в административном кабинете.",
+    "payload": {
+      "category": "Учебный процесс",
+      "year": "2026–2027"
+    }
+  },
+  {
+    "id": "legacy-documents-61",
+    "section": "documents",
+    "title": "Инструкция по безопасности",
+    "description": "Прикрепите файл в административном кабинете.",
+    "payload": {
+      "category": "Безопасность",
+      "year": "2026–2027"
+    }
+  }
+]

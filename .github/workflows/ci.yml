@@ -1,0 +1,35 @@
+name: Validate STEPLine EDU
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - name: API, permissions, content and client logic
+        run: |
+          node tests/experience.cjs
+          node tests/content-integration.cjs
+          node tests/offline-and-languages.cjs
+          node tests/ticker-motion.cjs
+      - name: Build Worker and validate rendered HTML
+        env:
+          SITES_ENV_READY: '1'
+          SITES_PROJECT_ROOT: ${{ github.workspace }}
+        run: |
+          npm run build
+          node tests/rendered-html.test.mjs

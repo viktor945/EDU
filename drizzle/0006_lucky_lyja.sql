@@ -1,0 +1,1 @@
+ALTER TABLE `schools` ADD `institution_type` text DEFAULT 'school' NOT NULL;

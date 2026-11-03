@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1789024463204,
+      "tag": "0000_acoustic_the_leader",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1789030963382,
+      "tag": "0001_tranquil_satana",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1789045395749,
+      "tag": "0002_fast_hardball",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1789558067230,
+      "tag": "0003_damp_molecule_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1789559439587,
+      "tag": "0004_yellow_beyonder",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1790172213179,
+      "tag": "0005_broken_captain_britain",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1790323377164,
+      "tag": "0006_lucky_lyja",
+      "breakpoints": true
+    }
+  ]
+}

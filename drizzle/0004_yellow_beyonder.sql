@@ -1,0 +1,1 @@
+ALTER TABLE `schools` ADD `section_layouts` text DEFAULT '{}' NOT NULL;

@@ -1,0 +1,9 @@
+'use client';
+import {Localized} from './admin-locale';
+import {useState,useEffect} from 'react';
+import type {SectionLayout} from '../school-design';
+export function MealSettings({value,onSave}:{value:SectionLayout;onSave:(v:SectionLayout)=>Promise<void>}){
+ const [meals,setMeals]=useState(value.meals||['Завтрак','Обед','Полдник','Ужин'].map(name=>({name,visible:true}))),[name,setName]=useState(''),[message,setMessage]=useState(''),[busy,setBusy]=useState(false);
+ useEffect(()=>{setMeals(value.meals||['Завтрак','Обед','Полдник','Ужин'].map(name=>({name,visible:true})));},[JSON.stringify(value.meals)]);
+ return <Localized as="section" className="meal-settings"><Localized as="h3">Приёмы пищи</Localized><Localized as="p">Показываются только включённые приёмы пищи с опубликованным меню на выбранный день. Название в карточке меню должно совпадать с названием здесь.</Localized><Localized as="div">{meals.map((m,i)=><Localized as="label" key={m.name}><Localized as="input" type="checkbox" checked={m.visible} onChange={e=>setMeals(meals.map((x,j)=>j===i?{...x,visible:e.target.checked}:x))}/>{m.name}</Localized>)}</Localized><Localized as="div"><Localized as="input" aria-label="Новый приём пищи" placeholder="Например, второй завтрак" value={name} onChange={e=>setName(e.target.value)}/><Localized as="button" type="button" className="owner-secondary" onClick={()=>{if(name.trim()&&!meals.some(m=>m.name.toLowerCase()===name.trim().toLowerCase())){setMeals([...meals,{name:name.trim(),visible:true}]);setName('');}}}>Добавить</Localized><Localized as="button" type="button" className="owner-primary" disabled={busy} onClick={async()=>{setBusy(true);try{await onSave({...value,meals});setMessage('Настройки приёмов пищи сохранены');}catch{setMessage('Не удалось сохранить. Повторите попытку.');}finally{setBusy(false);}}}>Сохранить приёмы пищи</Localized></Localized><Localized as="p" role="status">{message}</Localized></Localized>;
+}
