@@ -34,4 +34,6 @@ SITES_ENV_READY=1 SITES_PROJECT_ROOT="$PWD" npm run build
 node tests/rendered-html.test.mjs
 ```
 
-Тест content-integration намеренно выводит `Injected write failure` при проверке отката транзакции. Последняя команда запускает два именованных теста HTML; проверяйте, что выполнены оба. GitHub Actions запускает эти проверки при push и pull request. Автоматическое развёртывание пока не подключено.
+Тест content-integration намеренно выводит `Injected write failure` при проверке отката транзакции. Последняя команда запускает два именованных теста HTML; проверяйте, что выполнены оба. GitHub Actions запускает эти проверки при push и pull request.
+
+Развёртывание на Cloudflare из GitHub подготовлено отдельным workflow и включается после подключения вашего аккаунта, D1/R2 и Cloudflare Access. Настройка и ограничения: [docs/CLOUDFLARE_DEPLOYMENT.md](docs/CLOUDFLARE_DEPLOYMENT.md).

@@ -1,11 +1,17 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import { accessIssuer, authenticateCloudflareRequest, rejectCrossSiteMutation } from './cloudflare-access';
+
+declare const __STEPLINE_CLOUDFLARE__: boolean;
 
 interface Env {
   ASSETS: Fetcher;
   DB: D1Database;
   BUCKET: R2Bucket;
+  AUTH_PROVIDER?: string;
+  ACCESS_TEAM_DOMAIN?: string;
+  ACCESS_AUD?: string;
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -34,6 +40,23 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     globalThis.__STEP_EDU_RUNTIME_ENV__ = env;
     const url = new URL(request.url);
+
+    if ((typeof __STEPLINE_CLOUDFLARE__ !== 'undefined' && __STEPLINE_CLOUDFLARE__) || env.AUTH_PROVIDER === 'cloudflare-access') {
+      request = await authenticateCloudflareRequest(request, env);
+      if (rejectCrossSiteMutation(request)) return new Response('Forbidden', { status: 403 });
+      if (url.pathname === '/signin-with-chatgpt') {
+        try { accessIssuer(env); } catch { return new Response('Sign-in is not configured', { status: 503 }); }
+        // /admin must be protected by the Cloudflare Access application.
+        return Response.redirect(new URL('/admin', url), 302);
+      }
+      if (url.pathname === '/signout-with-chatgpt') {
+        return new Response(null, { status: 302, headers: {
+          Location: '/cdn-cgi/access/logout',
+          'Set-Cookie': 'CF_Authorization=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Lax',
+          'Cache-Control': 'no-store',
+        } });
+      }
+    }
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];

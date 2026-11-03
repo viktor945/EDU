@@ -8,6 +8,7 @@ const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
 
 const { d1, r2 } = hostingConfig;
+const standaloneCloudflare = process.env.STEPLINE_DEPLOY_TARGET === 'cloudflare';
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -45,6 +46,7 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    define: { __STEPLINE_CLOUDFLARE__: JSON.stringify(standaloneCloudflare) },
     resolve: {
       alias: {
         "cloudflare:workers": fileURLToPath(new URL("./build/cloudflare-workers-shim.ts", import.meta.url)),
@@ -59,11 +61,13 @@ export default defineConfig(async () => {
     },
     plugins: [
       vinext(),
-      sites(),
+      ...(standaloneCloudflare ? [] : [sites()]),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         inspectorPort: false,
-        config: localBindingConfig,
+        ...(standaloneCloudflare
+          ? { configPath: './.wrangler/cloudflare.json' }
+          : { config: localBindingConfig }),
       }),
     ],
   };
