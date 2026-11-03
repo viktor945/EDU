@@ -4,12 +4,12 @@
 
 Инструкция для программиста: [SERVER_TRANSFER.md](SERVER_TRANSFER.md).
 
-Исходники: https://github.com/viktor945/EDU- . GitHub хранит код и запускает проверки; серверная часть приложения требует Cloudflare Worker, D1 и R2. GitHub Pages для этого приложения не подходит.
+Исходники: https://github.com/viktor945/EDU . GitHub хранит код и запускает проверки; серверная часть приложения требует Cloudflare Worker, D1 и R2. GitHub Pages для этого приложения не подходит.
 
 Для разработки нужны Linux/WSL, Node.js >=22.13 (проверено на Node 24) и npm:
 
 ```bash
-git clone https://github.com/viktor945/EDU-.git STEPLine-EDU
+git clone https://github.com/viktor945/EDU.git STEPLine-EDU
 cd STEPLine-EDU
 npm ci
 bash scripts/setup-local.sh
